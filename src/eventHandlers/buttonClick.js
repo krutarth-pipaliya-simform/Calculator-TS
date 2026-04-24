@@ -1,11 +1,11 @@
-import calculate from "../calculate.js";
+import calculate from "../../calculate.js";
 import {
     appendDisplayValue,
     clearDisplayValue,
     deleteDisplayValue,
     displayString,
     setDisplayValue,
-} from "../inputHandlers/index.js";
+} from "../index.js";
 
 export default function buttonClick(e) {
     const value = e.target.getAttribute("appendable");

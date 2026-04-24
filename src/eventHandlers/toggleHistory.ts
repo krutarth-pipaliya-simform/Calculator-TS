@@ -1,0 +1,6 @@
+export default function (e: Event) {
+    const element = document.getElementsByTagName("aside")[0];
+    if (element && element.style.display === "none")
+        element.style.display = "flex";
+    else if (element) element.style.display = "none";
+}
