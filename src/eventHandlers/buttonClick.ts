@@ -7,7 +7,7 @@ import {
     setDisplayValue,
 } from "../inputHandlers/index.js";
 
-export default function buttonClick(e: PointerEvent) {
+export default function buttonClick(e: Event) {
     if (!e.target) return;
     if (!(e.target instanceof HTMLElement)) return;
     const value = e.target.getAttribute("appendable");
