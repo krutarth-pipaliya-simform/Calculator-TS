@@ -5,7 +5,7 @@ import {
     deleteDisplayValue,
     displayString,
     setDisplayValue,
-} from "../index.js";
+} from "../inputHandlers/index.js";
 
 export default function buttonClick(e) {
     const value = e.target.getAttribute("appendable");

@@ -3,7 +3,7 @@ import { renderHistory } from "../eventHandlers/addHistory.js";
 
 export let displayString = "";
 
-let inputTag = document.querySelector(".main-input-display > input");
+let inputTag = document.querySelector(".main-input-display > input") as HTMLInputElement;
 
 renderHistory();
 
@@ -28,7 +28,7 @@ export function clearDisplayValue() {
 }
 
 export function renderDisplayValue() {
-    inputTag.value = displayString;
+   inputTag.value = displayString ;
 }
 
 document.addEventListener("keydown", (e) => {
@@ -37,7 +37,7 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         try {
             calculate(displayString);
-        } catch (error) {
+        } catch (error : any) {
             alert(error.message);
             setDisplayValue(error.message);
         }
