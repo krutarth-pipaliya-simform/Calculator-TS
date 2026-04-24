@@ -2,7 +2,7 @@ import addHistory from "./eventHandlers/addHistory.js";
 import factorial from "./factorial.js";
 import { setDisplayValue } from "./inputHandlers/index.js";
 
-export default function evaluatePostfix(array = []) {
+export default function evaluatePostfix(array : Array<string | number> = []) {
     const addition = () =>
         result.push((result.pop() ?? 0) + (result.pop() ?? 0));
 

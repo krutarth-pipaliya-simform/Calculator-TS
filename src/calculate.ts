@@ -16,8 +16,8 @@ const precedence = new Map([
 ]);
 
 export default function calculate(str = "") {
-    let operators = [],
-        operands = [];
+    let operators: Array<string> = [],
+        operands: Array<string | number> = [];
     let operand = "";
 
     const drainStack = (bracketFlag = false) => {
@@ -26,7 +26,8 @@ export default function calculate(str = "") {
                 operators.pop();
                 return true;
             }
-            operands.push(operators.pop());
+            let popped = operators.pop();
+            if (popped) operands.push(popped);
         }
     };
 
@@ -85,8 +86,9 @@ export default function calculate(str = "") {
                 break;
 
             default:
-                if ("+-*^/%!".indexOf(str[i]) !== -1) {
-                    operator = str[i];
+                let char = str[i];
+                if (char && "+-*^/%!".indexOf(char) !== -1) {
+                    operator = char;
                 } else {
                     throw new SyntaxError("Enter valid characters only");
                 }
@@ -96,10 +98,12 @@ export default function calculate(str = "") {
         while (
             operator != "" &&
             operators.length &&
-            precedence.get(operators[operators.length - 1]) >=
-                precedence.get(operator)
+            precedence.get(operators[operators.length - 1]!)! >=
+                precedence.get(operator)!
         ) {
-            operands.push(operators.pop());
+            let val = operators[operators.length - 1];
+            let popped = operators.pop();
+            if (popped) operands.push(popped);
         }
 
         if (operator) {
