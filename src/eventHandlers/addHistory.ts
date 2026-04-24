@@ -21,6 +21,7 @@ export function renderHistory() {
     if (ul) ul.innerHTML = "";
     for (let [expression, result] of history) {
         const li = document.createElement("li");
+        li.className = "history-item";
         li.textContent = `${expression} = ${result}`;
         ul?.appendChild(li);
     }
