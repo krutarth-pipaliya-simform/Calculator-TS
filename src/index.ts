@@ -1,7 +1,7 @@
 import buttonClick from "./eventHandlers/buttonClick.js";
 import toggleHistory from "./eventHandlers/toggleHistory.js";
 
-const btn = document.querySelector(".main-header-hamburger");
+const btn = document.querySelector(".main-header-history");
 if (btn) {
     btn.addEventListener("click", toggleHistory);
 }
