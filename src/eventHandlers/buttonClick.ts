@@ -3,7 +3,6 @@ import {
     appendDisplayValue,
     clearDisplayValue,
     deleteDisplayValue,
-    displayString,
     setDisplayValue,
 } from "../inputHandlers/index.js";
 
@@ -23,7 +22,7 @@ export default function buttonClick(e: Event) {
 
             case "CALCULATE":
                 try {
-                    calculate(displayString);
+                    calculate();
                     break;
                 } catch (error: unknown) {
                     if (error instanceof Error) {

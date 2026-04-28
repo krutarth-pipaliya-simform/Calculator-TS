@@ -16,7 +16,12 @@ const precedence: Map<Operator, number> = new Map([
     [")", -1],
 ]);
 
-export default function calculate(str = "") {
+export default function calculate() {
+    let inputTag = document.querySelector(
+        ".main-input-display > input",
+    ) as HTMLInputElement;
+
+    let str = inputTag.value;
     let operators: Array<string> = [],
         operands: Array<string | number> = [];
     let operand = "";
