@@ -1,6 +1,7 @@
 import evaluatePostfix from "./evaluatePostfix.js";
+import type { Operator } from "./types.js";
 
-const precedence = new Map([
+const precedence: Map<Operator, number> = new Map([
     ["-", 1],
     ["+", 1],
     ["*", 2],
@@ -98,8 +99,8 @@ export default function calculate(str = "") {
         while (
             operator != "" &&
             operators.length &&
-            precedence.get(operators[operators.length - 1]!)! >=
-                precedence.get(operator)!
+            precedence.get(operators[operators.length - 1] as Operator)! >=
+                precedence.get(operator as Operator)!
         ) {
             let val = operators[operators.length - 1];
             let popped = operators.pop();
