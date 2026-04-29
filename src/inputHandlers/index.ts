@@ -39,9 +39,11 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         try {
             calculate();
-        } catch (error: any) {
-            alert(error.message);
-            setDisplayValue(error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                alert(error.message);
+                setDisplayValue(error.message);
+            }
         }
     }
 });
