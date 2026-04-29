@@ -3,11 +3,12 @@ import {
     appendDisplayValue,
     clearDisplayValue,
     deleteDisplayValue,
-    displayString,
     setDisplayValue,
 } from "../inputHandlers/index.js";
 
-export default function buttonClick(e) {
+export default function buttonClick(e: Event) {
+    if (!e.target) return;
+    if (!(e.target instanceof HTMLElement)) return;
     const value = e.target.getAttribute("appendable");
     if (e.target.classList[0] === "operations-button") {
         switch (value) {
@@ -21,17 +22,19 @@ export default function buttonClick(e) {
 
             case "CALCULATE":
                 try {
-                    calculate(displayString);
+                    calculate();
                     break;
-                } catch (error) {
-                    alert(error.message);
-                    setDisplayValue(error.message);
+                } catch (error: unknown) {
+                    if (error instanceof Error) {
+                        alert(error.message);
+                        setDisplayValue(error.message);
+                    }
                 } finally {
                     break;
                 }
 
             default:
-                appendDisplayValue(value);
+                appendDisplayValue(value ?? "");
                 break;
         }
     }
